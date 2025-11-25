@@ -6,7 +6,7 @@ async function connect(uri, opts = {}) {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   };
-  await mongoose.connect(uri, { ...defaultOpts, ...opts });
+  await mongoose.connect(process.env.MONGO_URI)
   return mongoose;
 }
 
