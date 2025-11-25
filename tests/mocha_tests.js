@@ -16,7 +16,7 @@ describe('TaskMasterAPI - basic flows (MongoDB)', function () {
     // ensure connected
     if (mongoose.connection.readyState === 0) {
       const uri = process.env.MONGO_URI || 'mongodb://localhost:27017/taskmasterapi_test';
-      await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+      await mongoose.connect(uri);
     }
     // clean DB
     await Promise.all([User.deleteMany({}), Task.deleteMany({}), Session.deleteMany({})]);

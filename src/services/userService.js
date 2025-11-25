@@ -4,6 +4,7 @@ const User = require('../models/user');
 async function createUser({ name, email, password }) {
   // Re-throw friendly error for duplicate
   try {
+    console.log("Creating user with email:", email);
     const user = new User({ name, email, password });
     await user.save();
     return user.toObject();

@@ -2,11 +2,9 @@
 const mongoose = require('mongoose');
 
 async function connect(uri, opts = {}) {
-  const defaultOpts = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  };
-  await mongoose.connect(process.env.MONGO_URI)
+  // Connect using the provided URI. Modern mongoose/mongo drivers handle options internally.
+  if (!uri) throw new Error('URI required to connect to MongoDB');
+  await mongoose.connect(uri);
   return mongoose;
 }
 
